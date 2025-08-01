@@ -129,6 +129,18 @@ fetch("/api/pay", {
 
 ---
 
+## 📚 Documentation
+
+### 📘 Python Documentation
+
+[View Python Docs →](https://github.com/astrasoftwares/astrapay/blob/main/Astrapay-python.md)
+
+### 📗 JavaScript Documentation
+
+[View JavaScript Docs →](https://github.com/astrasoftwares/astrapay/blob/main/astrapay-js.md)
+
+---
+
 ## 🧩 Supported Platforms
 
 | Language / Framework | Supported |
