@@ -1,19 +1,10 @@
-# AstraPay SDK for Node.js
+# AstraPay JS SDK
 
-> Lightweight Node.js SDK to integrate **M-Pesa STK Push** into your JavaScript applications.
-
----
-
-## 🚀 Features
-
-* ✅ Easy M-Pesa STK Push integration
-* 🔐 Secure access token generation
-* 🧱 Works with any Node.js backend
-* 💼 Built for developers in Kenya & beyond
+A lightweight Node.js SDK for integrating M-Pesa STK Push payments with ease.
 
 ---
 
-## 📆 Installation
+## 📦 Installation
 
 ```bash
 npm install astrapay
@@ -21,36 +12,30 @@ npm install astrapay
 
 ---
 
-## 🔐 Getting Your M-Pesa Daraja Credentials
+## 🔑 Getting Your M-Pesa Credentials
 
-1. Visit the [Safaricom Daraja Portal](https://developer.safaricom.co.ke)
-2. Create an account or log in
-3. Click on **My Apps** → **Add a New App**
-4. Select the product **MPesa Sandbox**
-5. You'll receive:
+1. Go to [Safaricom Daraja Portal](https://developer.safaricom.co.ke/).
+2. Sign up and create a new application.
+3. Generate the following:
 
    * **Consumer Key**
    * **Consumer Secret**
-
-You’ll also use these **sandbox details**:
-
-* **Shortcode**: `174379`
-* **Passkey**:
-  `bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919`
-* **Callback URL**: Your webhook endpoint, e.g., `https://yourdomain.com/callback`
+   * **Passkey**
+   * **Business Shortcode** (usually 174379 for sandbox)
+4. Set your **Callback URL** (your backend endpoint that Safaricom will notify).
 
 ---
 
-## 💡 Usage Example
+## ✨ Basic Node.js Usage
 
 ```js
 const AstraPay = require("astrapay");
 
 const client = new AstraPay({
-  consumerKey: "YOUR_CONSUMER_KEY",
-  consumerSecret: "YOUR_CONSUMER_SECRET",
+  consumerKey: "<YOUR_CONSUMER_KEY>",
+  consumerSecret: "<YOUR_CONSUMER_SECRET>",
   shortcode: "174379",
-  passkey: "YOUR_PASSKEY",
+  passkey: "<YOUR_PASSKEY>",
   callbackUrl: "https://yourdomain.com/callback"
 });
 
@@ -61,38 +46,73 @@ client.pay({ phone: "254712345678", amount: 10 })
 
 ---
 
-## ✅ Example Successful Response
+## ⚙️ Backend Integration Examples
 
-```json
-{
-  "MerchantRequestID": "c9aa-485e-a88a-be3f936aa2bc28590",
-  "CheckoutRequestID": "ws_CO_010820252054230712345678",
-  "ResponseCode": "0",
-  "ResponseDescription": "Success. Request accepted for processing",
-  "CustomerMessage": "Success. Request accepted for processing"
-}
+### Express (Node.js)
+
+```js
+const express = require("express");
+const bodyParser = require("body-parser");
+const AstraPay = require("astrapay");
+
+const app = express();
+app.use(bodyParser.json());
+
+const client = new AstraPay({
+  consumerKey: "<YOUR_CONSUMER_KEY>",
+  consumerSecret: "<YOUR_CONSUMER_SECRET>",
+  shortcode: "174379",
+  passkey: "<YOUR_PASSKEY>",
+  callbackUrl: "https://yourdomain.com/callback"
+});
+
+app.post("/api/pay", async (req, res) => {
+  const { phone, amount } = req.body;
+  const response = await client.pay({ phone, amount });
+  res.json(response);
+});
+
+app.listen(5000, () => console.log("Server running on port 5000"));
 ```
 
 ---
 
-## 📨 Callback Handling
+### React / Vue / Next.js (Frontend)
 
-Safaricom will send payment status updates to your `callbackUrl`. Make sure it accepts POST requests and can log/store transaction responses for verification.
+> ⚠️ Do **NOT** use AstraPay directly in frontend apps. Instead, call a backend API.
+
+```js
+// React/Vue fetch example
+fetch("http://localhost:5000/api/pay", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    phone: "254712345678",
+    amount: 10
+  })
+})
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
 
 ---
 
-## 🤝 Contributing
+---
 
-We welcome contributions!
+## ✅ Supported Platforms
 
-1. Fork the repo
-2. Create your feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Open a Pull Request
+| Language / Framework | Support |
+| -------------------- | ------- |
+| Node.js / Express    | ✅       |
+| React (via API)      | ✅       |
+| Vue (via API)        | ✅       |
+| Next.js (via API)    | ✅       |
+
 
 ---
 
-## 📄 License
+## 📚 License
 
-MIT License © 2025 [Astra Softwares](https://astrasoft.tech)
+MIT — Made with ❤️ by [Astra Softwares](https://astrasoft.tech)
