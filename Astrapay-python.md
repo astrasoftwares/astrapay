@@ -1,4 +1,4 @@
-# AstraPay SDK
+# AstraPay Python SDK
 
 ![AstraPay Logo](https://astrasoft.tech/static/assets/img/brand/logo1.png)
 
