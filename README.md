@@ -1,6 +1,6 @@
 # AstraPay SDK - Multi-language Integration
 
-AstraPay is a lightweight SDK that allows developers to integrate **M-Pesa STK Push** into their applications with minimal effort. It supports multiple languages and frameworks including **Node.js**, **Python**, **Flask**, **Django**, **React**, **Vue**, and **Next.js**.
+AstraPay is a lightweight SDK that allows developers to integrate **M-Pesa STK Push** into their applications with minimal effort. It supports multiple languages and frameworks including **Node.js**, **Python**, **Flask**, **Django**, **React**, **Vue**, **Next.js**, and **PHP**.
 
 ---
 
@@ -16,6 +16,12 @@ npm install astrapay
 
 ```bash
 pip install astrapay
+```
+
+### PHP
+
+```bash
+composer require astrasoftwares/astrapay
 ```
 
 ---
@@ -113,6 +119,25 @@ def pay_view(request):
     return JsonResponse(res)
 ```
 
+### 🐘 PHP
+
+```php
+require 'vendor/autoload.php';
+
+use Astrapay\AstraMpesa;
+
+$client = new AstraMpesa([
+  'consumerKey' => getenv('MPESA_CONSUMER_KEY'),
+  'consumerSecret' => getenv('MPESA_CONSUMER_SECRET'),
+  'shortcode' => getenv('MPESA_SHORTCODE'),
+  'passkey' => getenv('MPESA_PASSKEY'),
+  'callbackUrl' => getenv('MPESA_CALLBACK_URL')
+]);
+
+$response = $client->pay('254712345678', 10);
+print_r($response);
+```
+
 ### ⚛️ React / Vue / Next.js
 
 > Never expose your credentials in frontend. Use a backend endpoint:
@@ -139,6 +164,10 @@ fetch("/api/pay", {
 
 [View JavaScript Docs →](https://github.com/astrasoftwares/astrapay/blob/main/astrapay-js.md)
 
+### 📙 PHP Documentation
+
+[View PHP Docs →](https://github.com/astrasoftwares/astrapay/blob/main/Astrapay-php.md)
+
 ---
 
 ## 🧩 Supported Platforms
@@ -153,6 +182,7 @@ fetch("/api/pay", {
 | React (via API)      | ✅         |
 | Vue (via API)        | ✅         |
 | Next.js (via API)    | ✅         |
+| PHP                  | ✅         |
 
 ---
 
