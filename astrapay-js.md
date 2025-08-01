@@ -1,49 +1,49 @@
 # AstraPay SDK for Node.js
 
-> Lightweight Node.js SDK to integrate **M-Pesa STK Push** into your JavaScript applications easily.
+> Lightweight Node.js SDK to integrate **M-Pesa STK Push** into your JavaScript applications.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Simple STK Push integration
-- 🔐 Secure token generation
-- ⚡ Fast and minimal, works with any Node.js backend
-- 🧱 Supports RESTful workflows
+* ✅ Easy M-Pesa STK Push integration
+* 🔐 Secure access token generation
+* 🧱 Works with any Node.js backend
+* 💼 Built for developers in Kenya & beyond
 
 ---
 
-## 📦 Installation
+## 📆 Installation
 
 ```bash
 npm install astrapay
-🧾 How to Get M-Pesa Credentials (Daraja Portal)
-Go to Safaricom Daraja Portal
+```
 
-Create an account or log in
+---
 
-Create a new app under My Apps
+## 🔐 Getting Your M-Pesa Daraja Credentials
 
-Select MPesa Sandbox
+1. Visit the [Safaricom Daraja Portal](https://developer.safaricom.co.ke)
+2. Create an account or log in
+3. Click on **My Apps** → **Add a New App**
+4. Select the product **MPesa Sandbox**
+5. You'll receive:
 
-After creating your app, you’ll get:
+   * **Consumer Key**
+   * **Consumer Secret**
 
-Consumer Key
+You’ll also use these **sandbox details**:
 
-Consumer Secret
+* **Shortcode**: `174379`
+* **Passkey**:
+  `bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919`
+* **Callback URL**: Your webhook endpoint, e.g., `https://yourdomain.com/callback`
 
-Use the test credentials below for sandbox testing:
+---
 
-yaml
-Copy
-Edit
-Shortcode: 174379
-Passkey: bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
-Callback URL: https://yourdomain.com/callback
-🧑‍💻 Basic Usage
-js
-Copy
-Edit
+## 💡 Usage Example
+
+```js
 const AstraPay = require("astrapay");
 
 const client = new AstraPay({
@@ -57,39 +57,42 @@ const client = new AstraPay({
 client.pay({ phone: "254712345678", amount: 10 })
   .then(console.log)
   .catch(console.error);
-⚙️ Example Response
-json
-Copy
-Edit
+```
+
+---
+
+## ✅ Example Successful Response
+
+```json
 {
-  "MerchantRequestID": "12345-67890",
-  "CheckoutRequestID": "ws_CO_XXXXXXXXXXXXX",
+  "MerchantRequestID": "c9aa-485e-a88a-be3f936aa2bc28590",
+  "CheckoutRequestID": "ws_CO_010820252054230712345678",
   "ResponseCode": "0",
   "ResponseDescription": "Success. Request accepted for processing",
   "CustomerMessage": "Success. Request accepted for processing"
 }
-📘 Notes
-Use Safaricom’s test credentials for development
-
-Switch to production credentials for live use
-
-Handle STK callback data on your callbackUrl endpoint
-
-🤝 Contributing
-Pull requests are welcome. Please fork and open a PR.
-
-📄 License
-MIT License
-© 2025 Astra Softwares
-
-yaml
-Copy
-Edit
+```
 
 ---
 
-Would you like:
-- A live hosted version of this README for npm?
-- Or GitHub Actions to auto-publish when pushing to `main`?
+## 📨 Callback Handling
 
-Let me know, and I can prep those too.
+Safaricom will send payment status updates to your `callbackUrl`. Make sure it accepts POST requests and can log/store transaction responses for verification.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions!
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT License © 2025 [Astra Softwares](https://astrasoft.tech)
