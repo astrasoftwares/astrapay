@@ -166,7 +166,7 @@ fetch("/api/pay", {
 
 ### 📙 PHP Documentation
 
-[View PHP Docs →](https://github.com/astrasoftwares/astrapay/blob/main/Astrapay-php.md)
+[View PHP Docs →](https://github.com/astrasoftwares/astrapay/blob/main/astrapay-php.md)
 
 ---
 
