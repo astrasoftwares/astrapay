@@ -1,6 +1,6 @@
 # AstraPay SDK
 
-![AstraPay Logo](https://yourdomain.com/logo.png)
+![AstraPay Logo](https://astrasoft.tech/static/assets/img/brand/logo1.png)
 
 [![PyPI version](https://img.shields.io/pypi/v/astrapay.svg)](https://pypi.org/project/astrapay/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
