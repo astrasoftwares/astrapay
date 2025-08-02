@@ -6,19 +6,19 @@ AstraPay is a lightweight SDK that allows developers to integrate **M-Pesa STK P
 
 ## 🚀 Installation
 
-### Javascript & its frameworks
+### Javascript & frameworks
 
 ```bash
 npm install astrapay
 ```
 
-### Python & its frameworks
+### Python & frameworks
 
 ```bash
 pip install astrapay
 ```
 
-### PHP & its frameworks
+### PHP & frameworks
 
 ```bash
 composer require astrasoftwares/astrapay
