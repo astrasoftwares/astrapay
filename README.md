@@ -183,6 +183,7 @@ fetch("/api/pay", {
 | Vue (via API)        | ✅         |
 | Next.js (via API)    | ✅         |
 | PHP                  | ✅         |
+| Laravel                  | ✅     |
 
 ---
 
